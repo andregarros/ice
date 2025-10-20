@@ -1,0 +1,244 @@
+/* Variáveis de Cores (Fidelidade ao Design Limão/Verde) */
+:root {
+    --header-bg: #000;
+    --main-bg-green: #A0D0A0; 
+    --text-color-dark: #333; 
+    --text-color-light: #FFF;
+    --logo-geloup-color: #00FFFF;
+    --logo-slogan-color: #FF10F0;
+    --product-glow-color: #39FF14; 
+    --cta-gradient-start: #00FFFF;
+    --cta-gradient-end: #FF10F0;
+    --flavour-selector-bg: #000;
+    --flavour-icon-active-border: #39FF14;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: var(--header-bg);
+}
+
+/* ======================================= */
+/* 1. ESTILOS GERAIS E MOBILE-FIRST */
+/* ======================================= */
+
+/* Header Mobile */
+.header {
+    background-color: var(--header-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    color: var(--text-color-light);  
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+}
+
+
+.modo-festa { order: 3; width: 100%; justify-content: center; display: flex; align-items: center; margin-top: 5px; } 
+
+
+.nav.active a { text-align: center; padding: 10px 0; color: white; text-decoration: none; }
+
+/* Seção Principal (Hero Section) - MOBILE: Layout Empilhado */
+.hero-section {
+    background-color: transparent;
+    position: relative;
+    /* ALTURA AJUSTADA PARA FICAR VISÍVEL */
+    min-height: 20vh; /* 80% da altura da tela */
+    /* FIM DO AJUSTE DE ALTURA */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 30px 20px 90px;
+    transition: background-color 0.5s ease-in-out; 
+}
+
+
+.content-container {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    
+    /* CORREÇÃO DE Z-INDEX PARA APARECER ACIMA DO FUNDO SOLIDO */
+    position: relative; 
+    z-index: 2; 
+    /* -------------------------------------- */
+    
+    flex-grow: 1;
+}
+
+.product-wrapper {
+    width: 100vw; 
+    margin-top: 20px;
+    
+    /* CORREÇÃO DE Z-INDEX PARA APARECER ACIMA DO CONTENT-CONTAINER SE NECESSÁRIO */
+    position: relative;
+    z-index: 3;
+    /* -------------------------------------- */
+}
+
+.product-image {
+    width: 100%;
+    filter: drop-shadow(0 0 20px var(--product-glow-color)); 
+    animation: productPulse 4s infinite alternate ease-in-out;
+    transition: opacity 0.3s ease-in-out, filter 0.5s ease-in-out; 
+    
+    /* GARANTE QUE A IMAGEM ESTEJA VISÍVEL AO CARREGAR */
+    opacity: 1; 
+    /* ------------------------------------------------ */
+}
+.product-image.fade-out { opacity: 0; }
+.product-image.fade-in { opacity: 1; }
+
+@keyframes productPulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.03); }
+}
+
+.nav-arrow {
+    position: absolute;
+    top: 50%; /* Centraliza a seta no meio da seção (melhor que 35% sem texto) */
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: rgba(0,0,0,0.5);
+    background-color: rgba(255,255,255,0.2);
+    padding: 5px 10px;
+    border-radius: 50%;
+    z-index: 10;
+}
+.right-arrow { right: 20px; }
+
+
+.cta-button {
+    background: linear-gradient(90deg, var(--cta-gradient-start), var(--cta-gradient-end));
+    padding: 12px 40px;
+    border-radius: 50px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 1rem;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5), 0 0 8px rgba(255, 16, 240, 0.5);
+    z-index: 1;
+    margin-top: 50px;
+}
+
+.flavour-selector {
+    background-color: var(--flavour-selector-bg);
+    width: 100%;
+    padding: 0px 0;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    bottom: 0;
+    
+}
+.flavour-action-btn { 
+    font-size: 0.8rem; 
+    padding: 6px 15px; 
+    background: #000; /* Fundo preto para o botão */
+    color: var(--text-color-light);
+    border: 1px solid var(--flavour-icon-active-border); /* Borda com a cor do glow */
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 5px var(--flavour-icon-active-border);
+    
+}
+
+.flavour-icons { flex-wrap: wrap; justify-content: center; gap: 10px; display: flex; }
+.flavour-icon {
+    width: 65px; height: 65px; border-radius: 50%;
+    background-color: #555; border: 1px solid white; cursor: pointer; transition: all 0.3s;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    background-size: 80%; background-position: center; background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.flavour-icon[data-sabor="uva"] { background-color: #7B00FF; }
+.flavour-icon[data-sabor="morango"] { background-color: #FF007F; }
+.flavour-icon[data-sabor="maracuja"] { background-color: #FFC300; }
+.flavour-icon[data-sabor="limao"] { background-color: #32b31b; }
+.flavour-icon[data-sabor="melancia"] { background-color: #FF0033; }
+
+.flavour-icon.active {
+    border: 3px solid var(--flavour-icon-active-border);
+    box-shadow: 0 0 10px var(--flavour-icon-active-border);
+    transform: scale(1.1);
+}
+.sobre h1{
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
+.melancia{
+    display: flex;
+    color: white;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+ 
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0; /* Começa invisível para a animação funcionar */
+}
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Começa 20px abaixo da posição final */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.melancia p{
+    font-size: 16px;
+}
+.melancia img{
+border-radius: 50px;
+   
+    object-fit: cover; 
+    /* ADICIONE ESTAS LINHAS: */
+    animation: slowSpin 15s linear infinite; /* Rotação lenta e contínua */
+
+   
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    
+    /* ADICIONE ESTAS LINHAS: */
+  
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}.melancia img:hover {
+    /* ADICIONE ESTAS LINHAS: */
+    box-shadow: 0 0 15px #FF007F, 0 0 25px rgba(255, 0, 127, 0.5); /* Brilho rosa neon no hover */
+    transform: scale(1.05); /* Um pequeno zoom para indicar interatividade */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+}
+
+
+/* ======================================= */
+/* 2. MEDIA QUERY PARA DESKTOP */
+/* ======================================= */
+
+@media (min-width: 769px) {
+    /* ... (Regras Desktop Omitidas para brevidade, mas devem permanecer no seu arquivo) ... */
+    .hero-section { min-height: 80vh; } /* Mantendo o ajuste de altura em desktop */
+}
