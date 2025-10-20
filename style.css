@@ -226,6 +226,11 @@ border-radius: 50px;
     /* ADICIONE ESTAS LINHAS: */
   
     transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    /* Chamada da animação (Padrão) */
+    animation: slowSpin 5s ease-in-out infinite alternate;
+    
+    /* Chamada da animação (Safari/iOS) */
+    -webkit-animation: slowSpin 5s ease-in-out infinite alternate;
 }.melancia img:hover {
     /* ADICIONE ESTAS LINHAS: */
     box-shadow: 0 0 15px #FF007F, 0 0 25px rgba(255, 0, 127, 0.5); /* Brilho rosa neon no hover */
@@ -233,16 +238,16 @@ border-radius: 50px;
     cursor: pointer; /* Muda o cursor para indicar que é clicável */
 }
 
+/* VERSÃO PADRÃO */
 @keyframes slowSpin {
-    0% { 
-        transform: rotateZ(0deg); /* Posição Inicial */
-    }
-    50% { 
-        transform: rotateZ(15deg); /* Ponto Máximo */
-    }
-    100% { 
-        transform: rotateZ(0deg); /* Volta para a Posição Inicial */
-    }
+    0% { transform: rotateZ(0deg); }
+    100% { transform: rotateZ(15deg); }
+}
+
+/* VERSÃO PARA SAFARI/IOS */
+@-webkit-keyframes slowSpin {
+    0% { -webkit-transform: rotateZ(0deg); }
+    100% { -webkit-transform: rotateZ(15deg); }
 }
 
 /* ======================================= */
