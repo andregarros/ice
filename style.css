@@ -233,6 +233,17 @@ border-radius: 50px;
     cursor: pointer; /* Muda o cursor para indicar que é clicável */
 }
 
+@keyframes slowSpin {
+    0% { 
+        transform: rotateZ(0deg); /* Posição Inicial */
+    }
+    50% { 
+        transform: rotateZ(15deg); /* Ponto Máximo */
+    }
+    100% { 
+        transform: rotateZ(0deg); /* Volta para a Posição Inicial */
+    }
+}
 
 /* ======================================= */
 /* 2. MEDIA QUERY PARA DESKTOP */
