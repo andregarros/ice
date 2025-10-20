@@ -73,7 +73,7 @@ nav a{
     justify-content: center; 
     align-items: center;
     width: 100%;
-    
+    color: white;
     /* CORREÇÃO DE Z-INDEX PARA APARECER ACIMA DO FUNDO SOLIDO */
     position: relative; 
     z-index: 2; 
