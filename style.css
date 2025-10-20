@@ -254,6 +254,104 @@ border-radius: 50px;
 /* 2. MEDIA QUERY PARA DESKTOP */
 /* ======================================= */
 
+
+        /* Estilo do Card Individual */
+        .card-dica {
+            
+            border: 1px solid white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            /* Ajuste o width para caber 2 por linha com espaçamento */
+            width: 330px;
+            height: 200px;
+            margin-bottom: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card{
+            display: flex;
+            flex-direction: column ;
+            align-items: center;
+        }
+        .card h1{
+            color: rgb(255, 255, 255);
+        }
+        
+        .card-dica:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Detalhe colorida no topo (como no exemplo) */
+        .card-dica::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 10px;
+            border-bottom-left-radius: 8px;
+        }
+
+        /* Cores específicas para cada detalhe */
+        .card-dica:nth-child(1)::before { background-color: var(--cor-detalhe-1); }
+        .card-dica:nth-child(2)::before { background-color: var(--cor-detalhe-2); }
+        .card-dica:nth-child(3)::before { background-color: var(--cor-detalhe-3); }
+        /* Se você adicionar um quarto card, ele usará a cor 1 novamente */
+        .card-dica:nth-child(4)::before { background-color: var(--cor-detalhe-1); }
+
+
+        /* Ícone */
+        .card-dica .icon {
+            font-size: 3.5em;
+            line-height: 1;
+            margin-bottom: 20px;
+            color: var(--cor-texto-principal);
+            opacity: 0.7;
+        }
+
+        /* Título da Dica */
+        .card-dica h4 {
+            font-size: 1.25em;
+            color: var(--cor-texto-principal);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        /* Texto da Dica */
+        .card-dica p {
+            font-size: 0.9em;
+            color: var(--cor-texto-secundario);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* Botão */
+        .btn-acao {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: var(--cor-card-fundo);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        /* Cores dos botões */
+        .card-dica:nth-child(1) .btn-acao { background-color: var(--cor-detalhe-1); }
+        .card-dica:nth-child(2) .btn-acao { background-color: var(--cor-detalhe-2); }
+        .card-dica:nth-child(3) .btn-acao { background-color: var(--cor-detalhe-3); }
+
+        .btn-acao:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+  
 @media (min-width: 769px) {
     /* ... (Regras Desktop Omitidas para brevidade, mas devem permanecer no seu arquivo) ... */
     .hero-section { min-height: 80vh; } /* Mantendo o ajuste de altura em desktop */
